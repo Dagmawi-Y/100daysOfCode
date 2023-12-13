@@ -1,11 +1,8 @@
 age = input("What is your current age? ")
 
-age_num = int(age)
+years_left = 80 - int(age)
+days_left = years_left * 365
+weeks_left = years_left * 56
+months_left = years_left * 12
 
-days = age_num * 365.25
-
-months = int(days / 30)
-
-years = int(months / 12)
-
-print(f"You have lived {years} years, {months} months & and {days} days.")
+print(f"You have left {years_left} years, {months_left} months, {weeks_left} weeks, & and {days_left} days to live.")
