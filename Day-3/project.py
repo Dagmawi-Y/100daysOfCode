@@ -2,7 +2,7 @@ print ("Welcome to the treasure island, your mission is to find the treasure.")
 
 step1 = input("You\'re at a cross road, where do you want to go? left or right?").lower()
 if(step1 == "left"):
-    print ("You lost on your first step")
+    print ("You lost on your first step you fell into a hole.")
 else:
     step2 = input("swim or wait?").lower()
     if(step2 == "swim"):
