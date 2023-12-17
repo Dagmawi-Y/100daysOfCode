@@ -14,4 +14,4 @@ The #100DaysOfPython challenge is a commitment to code in Python for at least an
 ## Usage
 
 Each project may have its own set of instructions or requirements. Refer to the individual project folders or files for specific usage details.
- https://github.com/your-username/100DaysOfPython.git
+ [https://github.com/your-username/100DaysOfPython.git](https://github.com/Dagmawi-Y/100daysOfCode)https://github.com/Dagmawi-Y/100daysOfCode
