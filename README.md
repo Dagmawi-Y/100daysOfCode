@@ -1,9 +1,9 @@
 # 100 Days of Python Projects
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![GitHub](https://img.shields.io/github/license/your-username/100DaysOfPython)
-![GitHub stars](https://img.shields.io/github/stars/your-username/100DaysOfPython?style=social)
-![GitHub forks](https://img.shields.io/github/forks/your-username/100DaysOfPython?style=social)
+![GitHub](https://img.shields.io/github/license/Dagmawi-Y/100DaysOfCode)
+![GitHub stars](https://img.shields.io/github/stars/Dagmawi-Y/100DaysOfCode?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Dagmawi-Y/100DaysOfCode?style=social)
 
 This repository contains a collection of projects completed as part of the #100DaysOfPython challenge. Each project is a small, self-contained Python application or script developed over the course of the challenge.
 
