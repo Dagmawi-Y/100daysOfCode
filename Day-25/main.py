@@ -31,9 +31,18 @@ data = pandas.read_csv("weather-data.csv")
 # print(data[data.temp == max(data.temp)])
 
 squirrel_data = pandas.read_csv("2018-Central-Park-Squirrel-Census-Squirrel-Data.csv")
-print(squirrel_data)
+grey_squirrels_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+red_squirrels_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+black_squirrels_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
+print(grey_squirrels_count)
+print(red_squirrels_count)
+print(black_squirrels_count)
 
+squirrel_data_dict = {
+    "Fur Color": ["Gray", "Cinnamon", "Black"],
+    "Count": [grey_squirrels_count, red_squirrels_count, black_squirrels_count]
+}
 
-
-
+df = pandas.DataFrame(squirrel_data_dict)
+df.to_csv("squirrel_count.csv")
 
