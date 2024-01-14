@@ -12,8 +12,6 @@ weather_c = {
 
 # Write your code 👇 below:
 
-weather_f = {key: (value * 9/5) + 32  for (key, value) in weather_c.items()}
+weather_f = {key: (value * 9 / 5) + 32 for (key, value) in weather_c.items()}
 
 print(weather_f)
-
-
