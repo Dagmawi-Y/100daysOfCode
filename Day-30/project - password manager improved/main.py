@@ -62,14 +62,31 @@ def save():
 
 # --------------------------- Search Password ----------------------------------- #
 def search_password():
-    searched_site = website_entry.get()
-    with open('data.json', 'r') as file:
-        data = json.load(file)
-        if searched_site in data:
+    searched_site = website_entry.get().strip()
+    try:
+        with open('data.json', 'r') as file:
+            data = json.load(file)
             website_data = data[searched_site]
-            messagebox.showinfo(title="Data Found", message=f"Your data is {website_data}")
-        else:
-            messagebox.showinfo(title="Data not found",message=f"The site {searched_site} not found in your saved passowords")
+            messagebox.showinfo(
+                title=f"{searched_site}",
+                message=f"email: {website_data['email']}\npassword: {website_data['password']}"
+            )
+    except FileNotFoundError:
+        messagebox.showinfo(
+            title="File Not Found",
+            message="The data file 'data.json' was not found."
+        )
+    except json.JSONDecodeError:
+        messagebox.showinfo(
+            title="Invalid JSON Format",
+            message="The data file 'data.json' contains invalid JSON."
+        )
+    except KeyError:
+        messagebox.showinfo(
+            title="Data not found",
+            message=f"The site {searched_site} not found in your saved passwords"
+        )
+
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -86,14 +103,16 @@ canvas.grid(row=0, column=1)
 # Labels
 website_label = Label(text="Website:")
 website_label.grid(row=1, column=0)
+
 email_label = Label(text="Email/Username:")
 email_label.grid(row=2, column=0)
+
 password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
 # Entries
-website_entry = Entry(width=35)
-website_entry.grid(row=1, column=1, columnspan=2)
+website_entry = Entry(width=17)
+website_entry.grid(row=1, column=1)
 website_entry.focus()
 
 email_entry = Entry(width=35)
@@ -105,12 +124,12 @@ password_entry.grid(row=3, column=1)
 
 # Buttons
 search_button = Button(text="Search", command=search_password)
-search_button.grid(row=1, column=3)
+search_button.grid(row=1, column=2)
 
 generate_password_button = Button(text="Generate Password", command=generate_password)
 generate_password_button.grid(row=3, column=2)
 
-add_button = Button(text="Add", width=36, command=save)
+add_button = Button(text="Add", width=30, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
 
 window.mainloop()
