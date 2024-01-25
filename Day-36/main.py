@@ -41,16 +41,20 @@ day_before_yesterday_closing_price = day_before_yesterday_data["4. close"]
 print(day_before_yesterday_closing_price)
 
 # 3. - Find the positive difference between 1 and 2. e.g. 40 - 20 = -20, but the positive difference is 20. Hint: https://www.w3schools.com/python/ref_func_abs.asp
-positive_difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
-print(positive_difference)
+difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
+up_down_emoji = None
+if difference > 0:
+    up_down_emoji = "🔼"
+else:
+    up_down_emoji = "🔻"
 
 # 4. - Work out the percentage difference in price between closing price yesterday and closing price the day before yesterday.
-percentage_difference = round((positive_difference / float(yesterday_closing_price)) * 100, 2)
+percentage_difference = round((difference / float(yesterday_closing_price)) * 100, 2)
 print(percentage_difference)
 
 # 5. - If TODO4 percentage is greater than 5 then print("Get News").
-if percentage_difference > 5:
-    print("Get News")
+# if abs(percentage_difference) > 5:
+#     print("Get News")
 
 # STEP 2: https://newsapi.org/
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
@@ -60,7 +64,7 @@ news_api_params = {
     "apiKey": NEWS_API_KEY,
     "pageSize": 3
 }
-if percentage_difference < 5:
+if abs(percentage_difference) < 5:
     res = requests.get(NEWS_ENDPOINT, params=news_api_params)
     news_data = res.json()
     articles = news_data["articles"]
@@ -74,8 +78,10 @@ if percentage_difference < 5:
     # to send a separate message with each article's title and description to your phone number.
 
     # 8. - Create a new list of the first 3 article's headline and description using list comprehension.
-    formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in
-                          three_articles]
+    formatted_articles = [
+        f"{STOCK_NAME}: {up_down_emoji}{percentage_difference}%\nHeadline: {article['title']}. \nBrief: {article['description']}"
+        for article in
+        three_articles]
     print(formatted_articles)
 
     # 9. - Send each article as a separate message via Twilio.
